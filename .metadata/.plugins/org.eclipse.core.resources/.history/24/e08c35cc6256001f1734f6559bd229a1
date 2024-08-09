@@ -1,0 +1,47 @@
+package br.com.gft.pessoa.model.response;
+
+import java.util.Date;
+import java.util.List;
+
+public class PessoaResponse {
+
+	private Long idPessoa;
+
+	private String nome;
+
+	private Long cpf;
+
+	private Date dataNacimento;
+
+	private String cep;
+
+	private String logradouro;
+
+	private String bairro;
+
+	private String uf;
+
+	private String cidade;
+
+	private List<BoletoResponse> boletos;
+
+	public PessoaResponse() {
+		super();
+	}
+
+	public PessoaResponse(Long idPessoa, String nome, Long cpf, Date dataNacimento, String cep, String logradouro,
+			String bairro, String uf, String cidade, List<BoletoResponse> boletos) {
+		super();
+		this.idPessoa = idPessoa;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.dataNacimento = dataNacimento;
+		this.cep = cep;
+		this.logradouro = logradouro;
+		this.bairro = bairro;
+		this.uf = uf;
+		this.cidade = cidade;
+		this.boletos = boletos;
+	}
+
+}

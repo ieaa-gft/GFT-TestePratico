@@ -1,0 +1,18 @@
+package br.com.gft.person.dto;
+
+public class personDTO {
+
+    private String message;
+
+    @SuppressWarnings("unused")
+    public personDTO() {
+    }
+
+    public personDTO(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+}

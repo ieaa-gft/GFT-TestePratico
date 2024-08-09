@@ -1,0 +1,25 @@
+1722966072264	Rename package 'br.com.gft.slip'
+1722972619921	Rename package 'br.com.gft.boleto.web'
+1722972631578	Rename package 'br.com.gft.boleto.dto'
+1722972680253	Rename package 'br.com.gft.boleto.model.resource'
+1723063125316	Move compilation unit
+1723142570000	Rename type 'StatusBoleto'
+1723144737504	Delete element
+1723144743429	Delete element
+1723144747621	Delete element
+1723144751574	Delete element
+1723144757410	Delete element
+1723144761796	Delete element
+1723144767121	Delete element
+1723144770478	Delete element
+1723146214006	Rename method 'validarCriacaoBoleto'
+1723146267466	Rename method 'criarBoleto'
+1723146410381	Move compilation unit
+1723146414999	Delete element
+1723147425782	Delete element
+1723147445585	Rename package 'br.com.gft.slip'
+1723160210939	Copy compilation unit
+1723208908702	Rename type 'Application'
+1723211521389	Rename package 'br.com.gft.boleto'
+1723211541510	Rename package 'br.com.gft.boleto'
+1723229093363	Rename enum constant 'PEDENTE'

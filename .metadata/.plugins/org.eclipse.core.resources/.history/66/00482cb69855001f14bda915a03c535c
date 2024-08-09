@@ -1,0 +1,9 @@
+package br.com.gft.boleto.service;
+
+public class BoletoService {
+
+	public BoletoService() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

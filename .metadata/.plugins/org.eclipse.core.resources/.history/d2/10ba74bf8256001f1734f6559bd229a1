@@ -1,0 +1,9 @@
+package br.com.gft.pessoa.config;
+
+public class PessoaSwagger {
+
+	public PessoaSwagger() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,46 @@
+package br.com.gft.boleto.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.gft.boleto.model.Boleto;
+import br.com.gft.boleto.model.request.BoletoRequest;
+import br.com.gft.boleto.model.response.BoletoResponse;
+import br.com.gft.boleto.repository.BoletoRepository;
+
+@Service
+public class BoletoService {
+
+	@Autowired
+	private BoletoRepository repository;
+	
+	public BoletoResponse criarBoleto(Boleto boleto) {
+		return this.convertToResponse(repository.save(boleto));
+	}
+
+	public List<BoletoResponse> buscarTodosBoletosPorPessoa(Long idPessoa) {
+		List<Boleto> listaBoleto = repository.findByIdPessoaOrderByDtVencimento(idPessoa);
+		return listaBoleto.stream().map(this::convertToResponse).collect(Collectors.toList());
+	}
+	
+	public BoletoResponse buscarBoletoPorId(Long id) {
+		Boleto boleto = repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Este Boleto não foi encontrado ou não existe"));
+		return this.convertToResponse(boleto);
+	}
+
+	private BoletoResponse convertToResponse(Boleto boleto) {
+		BoletoResponse boletoResource = new BoletoResponse();
+		boletoResource.setIdBoleto(boleto.getIdBoleto());
+		boletoResource.setIdPessoa(boleto.getIdPessoa());
+		boletoResource.setValorBoleto(boleto.getValorBoleto());
+		boletoResource.setDtVencimento(boleto.getDtVencimento());
+		boletoResource.setValorPago(boleto.getValorPago());
+		boletoResource.setDtPagamento(boleto.getDtPagamento());
+		boletoResource.setStatus(boleto.getStatus());
+		return boletoResource;
+	}
+}

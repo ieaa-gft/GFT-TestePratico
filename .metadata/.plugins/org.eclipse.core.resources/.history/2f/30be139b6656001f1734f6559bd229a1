@@ -1,0 +1,40 @@
+package br.com.gft.pessoa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.gft.pessoa.model.Pessoa;
+import br.com.gft.pessoa.model.request.PessoaRequest;
+import br.com.gft.pessoa.model.response.PessoaResponse;
+import br.com.gft.pessoa.repository.PessoaRepository;
+
+@Service
+public class PessoaService {
+
+	@Autowired
+	private PessoaRepository repository;
+
+	public List<PessoaResponse> buscarTodas() {
+		return repository.findAll();
+	}
+
+	public Pessoa buscarPessoaPorId(Long idPessoa) throws Exception {
+		return repository.findById(idPessoa).orElseThrow();
+	}
+
+	private Pessoa convertToEntity(PessoaRequest pessoaRequest) {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome(pessoaRequest.getNome());
+
+		return pessoa;
+	}
+
+	private PessoaResponse convertToResponse(Pessoa pessoa) {
+		PessoaResponse pessoaResource = new PessoaResponse();
+		pessoaResource.setIdPessoa(pessoa.getIdPessoa());
+
+		return pessoaResource;
+	}
+}

@@ -1,0 +1,109 @@
+package br.com.gft.boleto.model.response;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import br.com.gft.boleto.model.Boleto;
+import jakarta.persistence.Column;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class BoletoResponse {
+
+	private Long idBoleto;
+
+	private Long idPessoa;
+
+	private Double valorBoleto;
+
+	private Date dtVencimento;
+
+	private Double valorPago;
+
+	private Date dtPagamento;
+
+	private Integer status;
+	
+	public BoletoResponse(Long idPessoa, Double valorBoleto, Date dtVencimento, Double valorPago,
+			Date dtPagamento, Integer status) {
+		super();
+		this.idPessoa = idPessoa;
+		this.valorBoleto = valorBoleto;
+		this.dtVencimento = dtVencimento;
+		this.valorPago = valorPago;
+		this.dtPagamento = dtPagamento;
+		this.status = status;
+	}
+
+	public Long getIdBoleto() {
+		return idBoleto;
+	}
+
+	public void setIdBoleto(Long idBoleto) {
+		this.idBoleto = idBoleto;
+	}
+
+	public Long getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(Long idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+
+	public Double getValorBoleto() {
+		return valorBoleto;
+	}
+
+	public void setValorBoleto(Double valorBoleto) {
+		this.valorBoleto = valorBoleto;
+	}
+
+	public Date getDtVencimento() {
+		return dtVencimento;
+	}
+
+	public void setDtVencimento(Date dtVencimento) {
+		this.dtVencimento = dtVencimento;
+	}
+
+	public Double getValorPago() {
+		return valorPago;
+	}
+
+	public void setValorPago(Double valorPago) {
+		this.valorPago = valorPago;
+	}
+
+	public Date getDtPagamento() {
+		return dtPagamento;
+	}
+
+	public void setDtPagamento(Date dtPagamento) {
+		this.dtPagamento = dtPagamento;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	
+	public static List<BoletoResponse> converter(List<Boleto> listaBoletos) {
+        return listaBoletos.stream().map(BoletoResponse::new).collect(Collectors.toList());
+    }
+}

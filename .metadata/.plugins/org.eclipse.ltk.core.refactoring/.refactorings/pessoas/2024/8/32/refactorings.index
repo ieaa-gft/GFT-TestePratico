@@ -1,0 +1,40 @@
+1722962873878	Copy compilation unit
+1722963441373	Rename type 'personDTO'
+1722963668727	Rename type 'person'
+1722965052276	Copy compilation unit
+1722966103822	Rename package 'br.com.gft.person'
+1722966129672	Rename type 'personResponse'
+1722966145506	Rename type 'slipResponse'
+1722966171701	Rename type 'personController'
+1722969641588	Rename package 'br.com.gft.pessoa.dto'
+1722969685801	Delete element
+1722969697530	Move compilation unit
+1722969702523	Move compilation unit
+1722969707277	Delete element
+1722969712816	Delete element
+1722969783978	Rename type 'boletoResponse'
+1722969795501	Rename type 'pessoaResponse'
+1722969799703	Delete element
+1722969810147	Rename type 'pessoaController'
+1722969820514	Delete element
+1722970364026	Rename package 'br.com.gft.pessoa.web'
+1722970401162	Delete element
+1722970536586	Delete element
+1722970723065	Delete element
+1722971763219	Rename type 'pessoa'
+1722972585226	Delete element
+1722972896382	Move compilation unit
+1722972909508	Move compilation unit
+1722972925560	Rename package 'br.com.gft.pessoa.repository.impl'
+1722972944554	Move compilation unit
+1722972958839	Rename type 'PessoaRepository'
+1722972973171	Rename type 'PessoaRepositoryImpl'
+1722972977325	Delete element
+1722973245967	Delete element
+1723160200949	Delete element
+1723208863667	Rename type 'Application'
+1723210251177	Delete element
+1723213038645	Delete element
+1723217046867	Delete element
+1723224263777	Delete element
+1723229071306	Rename enum constant 'PEDENTE'

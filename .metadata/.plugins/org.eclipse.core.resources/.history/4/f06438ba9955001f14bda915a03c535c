@@ -1,0 +1,12 @@
+package br.com.gft.boleto.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class BoletoService {
+
+	public BoletoService() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

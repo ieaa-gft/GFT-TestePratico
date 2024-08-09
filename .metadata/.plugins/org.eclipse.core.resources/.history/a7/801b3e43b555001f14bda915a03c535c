@@ -1,0 +1,9 @@
+package br.com.gft.boleto.model.request;
+
+public class BoletoRequest {
+
+	public BoletoRequest() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,9 @@
+package br.com.gft.pessoa.model;
+
+public class Boleto {
+
+	public Boleto() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

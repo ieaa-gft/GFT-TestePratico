@@ -1,0 +1,32 @@
+package br.com.gft.pessoa.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.management.AttributeNotFoundException;
+
+import org.aspectj.util.LangUtil.ProcessController.Thrown;
+import org.hibernate.ObjectNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import br.com.gft.pessoa.repository.Pessoa;
+import br.com.gft.pessoa.repository.PessoaRepository;
+
+@Service
+public class PessoaService {
+	
+	@Autowired
+	private PessoaRepository repository;
+	
+	List<Pessoa> findAll() {
+		return repository.findAll();
+	}
+	
+	public Pessoa findByIdPerson(Long idPerson) throws Exception {
+		return repository.findById(idPerson).orElseThrow();
+	}	
+	
+}

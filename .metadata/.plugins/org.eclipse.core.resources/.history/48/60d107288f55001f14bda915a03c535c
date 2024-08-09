@@ -1,0 +1,101 @@
+package br.com.gft.boleto.model;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+
+@Entity(name="Boleto")
+@SuppressWarnings("serial")
+public class Boleto implements Serializable {
+	
+	@Id @GeneratedValue
+	private Long idBoleto;
+
+	@NotNull
+	private Long idPessoa;
+
+	@NotNull
+	private Double valorBoleto;
+
+	@NotNull
+	private Date dataVencimento;
+
+	private Double valorPago;
+
+	private Date dataPagamento;
+
+	@NotNull
+	private char status;
+
+	public Boleto(@NotNull Long idPessoa, @NotNull Double valorBoleto, @NotNull Date dataVencimento, Double valorPago,
+			Date dataPagamento, @NotNull char status) {
+		super();
+		this.idPessoa = idPessoa;
+		this.valorBoleto = valorBoleto;
+		this.dataVencimento = dataVencimento;
+		this.valorPago = valorPago;
+		this.dataPagamento = dataPagamento;
+		this.status = status;
+	}
+
+	public Long getIdBoleto() {
+		return idBoleto;
+	}
+
+	public void setIdBoleto(Long idBoleto) {
+		this.idBoleto = idBoleto;
+	}
+
+	public Long getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(Long idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+
+	public Double getValorBoleto() {
+		return valorBoleto;
+	}
+
+	public void setValorBoleto(Double valorBoleto) {
+		this.valorBoleto = valorBoleto;
+	}
+
+	public Date getDataVencimento() {
+		return dataVencimento;
+	}
+
+	public void setDataVencimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
+
+	public Double getValorPago() {
+		return valorPago;
+	}
+
+	public void setValorPago(Double valorPago) {
+		this.valorPago = valorPago;
+	}
+
+	public Date getDataPagamento() {
+		return dataPagamento;
+	}
+
+	public void setDataPagamento(Date dataPagamento) {
+		this.dataPagamento = dataPagamento;
+	}
+
+	public char getStatus() {
+		return status;
+	}
+
+	public void setStatus(char status) {
+		this.status = status;
+	}
+
+}

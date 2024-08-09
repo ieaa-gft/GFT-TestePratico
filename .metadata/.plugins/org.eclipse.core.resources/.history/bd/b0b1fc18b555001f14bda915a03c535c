@@ -1,0 +1,87 @@
+package br.com.gft.boleto.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.gft.boleto.model.Boleto;
+import br.com.gft.boleto.model.StatusBoleto;
+import br.com.gft.boleto.model.response.BoletoResponse;
+import br.com.gft.boleto.repository.BoletoRepository;
+import jakarta.transaction.Transactional;
+
+@Service
+public class BoletoService {
+
+	@Autowired
+	private BoletoRepository repository;
+
+	public BoletoResponse criarBoleto(Boleto boleto) {
+		return this.convertToResponse(repository.save(boleto));
+	}
+
+	public List<BoletoResponse> buscarTodosBoletosPorPessoa(Long idPessoa) {
+		List<Boleto> listaBoleto = repository.findByIdPessoaOrderByDtVencimento(idPessoa);
+		return listaBoleto.stream().map(this::convertToResponse).collect(Collectors.toList());
+	}
+
+	public BoletoResponse buscarBoletoPorId(Long id) {
+		Boleto boleto = repository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Este Boleto não foi encontrado ou não existe."));
+		return this.convertToResponse(boleto);
+	}
+
+	@Transactional
+	public BoletoResponse pagarBoleto(Long id, Double valorPago) {
+		try {
+			Boleto boleto = repository.findById(id)
+					.orElseThrow(() -> new Exception("Este Boleto não foi encontrado ou não existe."));
+
+			this.validarPagamentoBoleto(boleto, valorPago)
+			boleto.setValorPago(valorPago);
+			boleto.setDtPagamento(new Timestamp(System.currentTimeMillis()));
+			return this.convertToResponse(repository.save(boleto));
+			}
+		} catch (Exception e) {
+			// JOptionPane.showInputDialog("Erro ao tentar pagar Boleto.", e.getMessage());
+			return null;
+		}
+	}
+	
+	public void excluirBoleto(Long id) throws Exception {
+		try {
+			Boleto boleto = repository.findById(id)
+					.orElseThrow(() -> new Exception("Este Boleto não foi encontrado ou não existe."));
+
+			if (boleto.getStatus().equals(StatusBoleto.PAGO)) {
+				throw new Exception("Não é possível excluir um boleto com status PAGO.");
+			}
+
+			repository.delete(boleto);
+			
+		} catch (Exception e) {
+			throw new Exception("Erro ao tentar excluir o Boleto: " + e.getMessage());
+		}
+	}
+
+	private void validarPagamentoBoleto(Boleto boleto, Double valorPago) {
+		if (!boleto.getStatus().equals(StatusBoleto.PEDENTE))
+			throw new Exception("Só é permitido pagar um Boleto que esteja com Status de PENDENTE.");
+		if (boleto.getValorBoleto() == valorPago)
+			throw new Exception("O Valor a ser Pago, deve ser o mesmo Valor do Boleto.");
+	}
+
+	private BoletoResponse convertToResponse(Boleto boleto) {
+		BoletoResponse boletoResource = new BoletoResponse();
+		boletoResource.setIdBoleto(boleto.getIdBoleto());
+		boletoResource.setIdPessoa(boleto.getIdPessoa());
+		boletoResource.setValorBoleto(boleto.getValorBoleto());
+		boletoResource.setDtVencimento(boleto.getDtVencimento());
+		boletoResource.setValorPago(boleto.getValorPago());
+		boletoResource.setDtPagamento(boleto.getDtPagamento());
+		boletoResource.setStatus(boleto.getStatus());
+		return boletoResource;
+	}
+}

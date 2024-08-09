@@ -1,0 +1,13 @@
+package br.com.gft.boleto.model;
+
+public enum StatusBoleto {
+	
+	PEDENTE(0), PAGO(1), VENCIDO(2);
+	
+	public final Integer statusCode;
+	
+	StatusBoleto(Integer statusCode){
+		this.statusCode = statusCode;
+	}
+
+}

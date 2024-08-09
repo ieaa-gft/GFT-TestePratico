@@ -1,0 +1,62 @@
+package br.com.gft.boleto.model.response;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import br.com.gft.boleto.model.Boleto;
+import br.com.gft.boleto.model.StatusBoleto;
+import jakarta.persistence.Column;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class BoletoResponse {
+
+	private Long idBoleto;
+
+	private Long idPessoa;
+
+	private Double valorBoleto;
+
+	private Date dtVencimento;
+
+	private Double valorPago;
+
+	private Date dtPagamento;
+
+	private Integer status;
+	
+	public BoletoResponse(Long idPessoa, Double valorBoleto, Date dtVencimento, Double valorPago,
+			Date dtPagamento, Integer status) {
+		super();
+		this.idPessoa = idPessoa;
+		this.valorBoleto = valorBoleto;
+		this.dtVencimento = dtVencimento;
+		this.valorPago = valorPago;
+		this.dtPagamento = dtPagamento;
+		this.status = status;
+	}
+
+	public List<BoletoResponse> converterParaBoletoResource(List<Boleto> boletos) {
+        return boletos.stream()
+                .map(this::converter)
+                .collect(Collectors.toList());
+    }
+
+    private BoletoResponse converter(Boleto boleto) {
+    	BoletoResponse boletoResource = new BoletoResponse(boleto.getIdBoleto(),boleto.getIdPessoa(),boleto.getValorBoleto(),boleto.getDataVencimento(),boleto.getValorPago(),boleto.getDataPagamento(),boleto.getStatus());
+        return boletoResource;
+    }
+}

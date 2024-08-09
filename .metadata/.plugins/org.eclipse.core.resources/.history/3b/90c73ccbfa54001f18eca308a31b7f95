@@ -1,0 +1,9 @@
+package br.com.gft.boleto.repository;
+
+public class Boleto {
+
+	public Boleto() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

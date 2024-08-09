@@ -1,0 +1,126 @@
+package br.com.gft.boleto.model.response;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import br.com.gft.boleto.model.Boleto;
+import br.com.gft.boleto.model.StatusBoleto;
+
+public class BoletoResponse {
+
+	private Long idBoleto;
+
+	private Long idPessoa;
+
+	private Double valorBoleto;
+
+	private Date dtVencimento;
+
+	private Double valorPago;
+
+	private Date dtPagamento;
+
+	private StatusBoleto status;
+	
+	public BoletoResponse() {
+		super();
+	}
+	
+	public BoletoResponse(Long idPessoa, Double valorBoleto, Date dtVencimento, Double valorPago,
+			Date dtPagamento, StatusBoleto status) {
+		super();
+		this.idPessoa = idPessoa;
+		this.valorBoleto = valorBoleto;
+		this.dtVencimento = dtVencimento;
+		this.valorPago = valorPago;
+		this.dtPagamento = dtPagamento;
+		this.status = status;
+	}
+
+	public Long getIdBoleto() {
+		return idBoleto;
+	}
+
+	public void setIdBoleto(Long idBoleto) {
+		this.idBoleto = idBoleto;
+	}
+
+	public Long getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(Long idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+
+	public Double getValorBoleto() {
+		return valorBoleto;
+	}
+
+	public void setValorBoleto(Double valorBoleto) {
+		this.valorBoleto = valorBoleto;
+	}
+
+	public Date getDtVencimento() {
+		return dtVencimento;
+	}
+
+	public void setDtVencimento(Date dtVencimento) {
+		this.dtVencimento = dtVencimento;
+	}
+
+	public Double getValorPago() {
+		return valorPago;
+	}
+
+	public void setValorPago(Double valorPago) {
+		this.valorPago = valorPago;
+	}
+
+	public Date getDtPagamento() {
+		return dtPagamento;
+	}
+
+	public void setDtPagamento(Date dtPagamento) {
+		this.dtPagamento = dtPagamento;
+	}
+
+	public StatusBoleto getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusBoleto status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "BoletoResponse [idBoleto=" + idBoleto + ", idPessoa=" + idPessoa + ", valorBoleto=" + valorBoleto
+				+ ", dtVencimento=" + dtVencimento + ", valorPago=" + valorPago + ", dtPagamento=" + dtPagamento
+				+ ", status=" + status + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dtPagamento, dtVencimento, idBoleto, idPessoa, status, valorBoleto, valorPago);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BoletoResponse other = (BoletoResponse) obj;
+		return Objects.equals(dtPagamento, other.dtPagamento) && Objects.equals(dtVencimento, other.dtVencimento)
+				&& Objects.equals(idBoleto, other.idBoleto) && Objects.equals(idPessoa, other.idPessoa)
+				&& status == other.status && Objects.equals(valorBoleto, other.valorBoleto)
+				&& Objects.equals(valorPago, other.valorPago);
+	}
+    
+    
+}

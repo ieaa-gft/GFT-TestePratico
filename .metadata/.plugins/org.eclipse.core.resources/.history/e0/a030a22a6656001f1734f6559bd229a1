@@ -1,0 +1,113 @@
+package br.com.gft.pessoa.model.response;
+
+import java.util.Date;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+public class PessoaResponse {
+
+	private Long idPessoa;
+
+	private String nome;
+
+	private Long cpf;
+
+	private Date dtNacimento;
+
+	private String cep;
+
+	private String logradouro;
+
+	private String bairro;
+
+	private String uf;
+
+	private String cidade;
+
+	private List<BoletoResponse> listBoletos;
+
+	public Long getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(Long idPessoa) {
+		this.idPessoa = idPessoa;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Long getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
+	}
+
+	public Date getDtNacimento() {
+		return dtNacimento;
+	}
+
+	public void setDtNacimento(Date dtNacimento) {
+		this.dtNacimento = dtNacimento;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public List<BoletoResponse> getListBoletos() {
+		return listBoletos;
+	}
+
+	public void setListBoletos(List<BoletoResponse> listBoletos) {
+		this.listBoletos = listBoletos;
+	}
+
+}

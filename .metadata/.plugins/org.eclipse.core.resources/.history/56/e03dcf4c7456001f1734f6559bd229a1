@@ -1,0 +1,22 @@
+package br.com.gft.pessoa.model.response;
+
+import java.sql.Timestamp;
+
+import br.com.gft.boletos.model.enums.StatusBoletoEnum;
+
+public class BoletoResponse {
+	private Long idBoleto;
+
+	private Long idPessoa;
+
+	private Double valorBoleto;
+
+	private Timestamp dtVencimento;
+
+	private Double valorPago;
+
+	private Timestamp dtPagamento;
+
+	private StatusBoletoEnum status;
+
+}

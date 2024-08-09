@@ -1,0 +1,30 @@
+package br.com.gft.boleto.model.request;
+
+import java.sql.Timestamp;
+
+import br.com.gft.boleto.model.StatusBoletoEnum;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class BoletoRequest {
+
+	@NotNull(message = "O campo Pessoa é obrigatório.")
+	private Long idPessoa;
+
+	@NotNull(message = "O campo Valor do Boleto é obrigatório")
+	private Double valorBoleto;
+
+	@NotNull(message = "O campo Data de vencimento é obrigatória")
+	private Timestamp dtVencimento;
+
+	private Double valorPago;
+
+	private Timestamp dataPagamento;
+
+	@NotNull(message = "O campo Status é obrigatório")
+	private StatusBoletoEnum status;
+
+}

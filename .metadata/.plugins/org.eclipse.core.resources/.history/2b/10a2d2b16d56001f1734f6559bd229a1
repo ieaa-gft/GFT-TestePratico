@@ -1,0 +1,48 @@
+package br.com.gft.pessoa.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.gft.pessoa.model.request.PessoaRequest;
+import br.com.gft.pessoa.model.response.PessoaResponse;
+import jakarta.validation.Valid;
+
+@RestController
+@FeignClient(url = "http://localhost:8080/PessoaResponse", name = "PessoaResponse")
+public interface PessoaController {
+	
+	@PostMapping
+	public static void incluirPessoa(@Valid @RequestBody PessoaRequest pessoa) {
+
+	}
+
+	@GetMapping
+	public static List<PessoaResponse> buscarTodas() {
+		return new ArrayList<PessoaResponse>();
+	}
+
+	@GetMapping("/{idPessoa}")
+	public static PessoaResponse buscarPorId(@PathVariable("idPessoa") Long idPessoa) {
+		return new PessoaResponse();
+	}
+
+	@PutMapping("/{idPessoa}")
+	public static void alterarPessoa(@PathVariable("idPessoa") Long idPessoa) {
+
+	}
+
+	@DeleteMapping("/{idPessoa}")
+	public static void deletePerson(@PathVariable("idPessoa") Long idPessoa) {
+
+	}
+
+}

@@ -1,0 +1,7 @@
+package br.com.gft.pessoa.repository.impl;
+
+import br.com.gft.pessoa.repository.PessoaRepository;
+
+public abstract class PessoaRepositoryImpl implements PessoaRepository {
+
+}

@@ -1,0 +1,34 @@
+package br.com.gft.boleto.model;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+
+@Entity(name="Boleto")
+@SuppressWarnings("serial")
+public class Boleto implements Serializable {
+	
+	@Id @GeneratedValue
+	private Long idBoleto;
+
+	@NotNull
+	private Long idPessoa;
+
+	@NotNull
+	private Double valorBoleto;
+
+	@NotNull
+	private Date dataVencimento;
+
+	private Double valorPago;
+
+	private Date dataPagamento;
+
+	@NotNull
+	private char status;
+
+}

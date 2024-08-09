@@ -1,0 +1,54 @@
+package br.com.gft.pessoa.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.gft.pessoa.model.request.PessoaRequest;
+import br.com.gft.pessoa.model.response.PessoaResponse;
+import br.com.gft.pessoa.service.PessoaService;
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/api/pessoas")
+public class PessoaController {
+
+	@Autowired
+	private PessoaService pessoaService;
+
+	@PostMapping
+	public ResponseEntity<PessoaResponse> incluirPessoa(@Valid @RequestBody PessoaRequest pessoa) throws Exception {
+		return new ResponseEntity<>(pessoaService.incluirPessoa(pessoa), HttpStatus.CREATED);
+	}
+
+	@GetMapping
+	public ResponseEntity<List<PessoaResponse>> buscarTodas() {
+		return ResponseEntity.ok(pessoaService.buscarTodasPessoas());
+	}
+
+	@GetMapping("/{idPessoa}")
+	public PessoaResponse buscarPorId(@PathVariable("idPessoa") Long idPessoa) {
+		return new PessoaResponse();
+	}
+
+	@PutMapping("/{idPessoa}")
+	public static void alterarPessoa(@PathVariable("idPessoa") Long idPessoa) {
+
+	}
+
+	@DeleteMapping("/{idPessoa}")
+	public static void deletePerson(@PathVariable("idPessoa") Long idPessoa) {
+
+	}
+
+}

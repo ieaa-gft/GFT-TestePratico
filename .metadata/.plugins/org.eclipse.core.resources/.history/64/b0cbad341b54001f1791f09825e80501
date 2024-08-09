@@ -1,0 +1,44 @@
+package br.com.gft.pessoa.web;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.gft.pessoa.dto.personResponse;
+
+@RestController
+@FeignClient(url = "http://localhost:8080/personResponse", name = "personResponse")
+public interface personController {
+
+	@GetMapping
+	public static List<personResponse> getAllPerson() {
+		return new List<personResponse>();
+	}
+
+	@GetMapping("/{idPerson}")
+	public static personResponse getPersonById(@PathVariable("idPerson") Long idPerson) {
+		return new personResponse();
+	}
+
+	@PutMapping
+	public static void insertPerson() {
+
+	}
+
+	@PostMapping("/{idPerson}")
+	public static void setPerson(@PathVariable("idPerson") Long idPerson) {
+
+	}
+
+	@DeleteMapping("/{idPerson}")
+	public static void deletePerson(@PathVariable("idPerson") Long idPerson) {
+
+	}
+
+}

@@ -1,0 +1,34 @@
+package br.com.gft.pessoa.service;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+
+@Entity(name="Pessoa")
+@SuppressWarnings("serial")
+public class Pessoa implements Serializable {
+	
+	@Id @GeneratedValue
+	private Long idPerson;
+    
+    private String name;
+   
+    private Long cpfNumber;
+    
+    private Date dateBirth;
+    
+    private String cep;
+   
+    private String address;
+    
+    private String district;
+    
+    private String uf;
+    
+    private String city;
+
+}

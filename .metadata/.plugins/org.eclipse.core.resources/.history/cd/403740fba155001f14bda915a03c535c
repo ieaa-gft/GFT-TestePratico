@@ -1,0 +1,39 @@
+package br.com.gft.boleto.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.com.gft.boleto.model.Boleto;
+import br.com.gft.boleto.model.response.BoletoResponse;
+import br.com.gft.boleto.repository.BoletoRepository;
+
+@Service
+public class BoletoService {
+	
+	@Autowired
+    private BoletoRepository repository;
+	
+	public List<BoletoResponse> buscarTodosBoletosPorPessoa(Long idPessoa){
+		Optional<List<Boleto>> listaBoleto = repository.findByIdPessoaOrderByDataVencimento(idPessoa);
+		
+		return listaBoleto.get().stream()
+                .map(this::convertToResponse)
+                .collect(Collectors.toList());
+	}
+
+
+    private BoletoResponse convertToResponse(Boleto boleto) {
+    	BoletoResponse boletoResource = new BoletoResponse();
+        boletoResource.setIdBoleto(boleto.getIdBoleto());
+        boletoResource.setIdPessoa(boleto.getIdPessoa());
+        boletoResource.setValorBoleto(boleto.getValorBoleto());
+        boletoResource.setDtVencimento(boleto.getDtVencimento());
+        boletoResource.setValorPago(boleto.getValorPago());
+        boletoResource.setDtPagamento(boleto.getDtPagamento());
+        boletoResource.setStatus(boleto.getStatus());
+        return boletoResource;
+    }
+}

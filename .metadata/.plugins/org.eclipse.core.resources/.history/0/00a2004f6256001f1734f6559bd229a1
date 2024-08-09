@@ -1,0 +1,59 @@
+package br.com.gft.pessoa.model.request;
+
+import java.util.Date;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Data
+@NoArgsConstructor
+public class PessoaRequest {
+
+	@NotBlank(message = "O campo 'Nome' não pode ser nulo.")
+	private String name;
+
+	@NotBlank(message = "O campo 'CPF' não pode ser nulo.")
+	private Long cpf;
+
+	@NotBlank(message = "O campo 'Nome' não pode ser nulo.")
+	private Date dateBirth;
+
+	private String cep;
+
+	private String address;
+
+	private String district;
+
+	private String uf;
+
+	private String city;
+
+	public PessoaRequest() {
+		super();
+	}
+
+	public PessoaRequest(String name, Long cpfNumber, Date dateBirth, String cep, String address, String district,
+			String uf, String city) {
+		super();
+		this.name = name;
+		this.cpfNumber = cpfNumber;
+		this.dateBirth = dateBirth;
+		this.cep = cep;
+		this.address = address;
+		this.district = district;
+		this.uf = uf;
+		this.city = city;
+	}
+
+	@Override
+	public String toString() {
+		return "PessoaRequest [name=" + name + ", cpfNumber=" + cpfNumber + ", dateBirth=" + dateBirth + ", cep=" + cep
+				+ ", address=" + address + ", district=" + district + ", uf=" + uf + ", city=" + city + "]";
+	}
+
+}

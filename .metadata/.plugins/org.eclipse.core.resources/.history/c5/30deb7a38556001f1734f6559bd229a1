@@ -1,0 +1,9 @@
+package br.com.gft.boletos.config;
+
+public class BoletoSwagger {
+
+	public BoletoSwagger() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

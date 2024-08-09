@@ -1,0 +1,16 @@
+package br.com.gft.boleto.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import br.com.gft.boleto.model.Boleto;
+
+@Repository
+public interface BoletoRepository extends JpaRepository<Boleto, Long> {
+	
+	public Optional<List<Boleto>> findByIdPessoaOrderByDataVencimento(Long idPessoa);
+
+}

@@ -1,0 +1,10 @@
+package br.com.gft.pessoa.repository;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.validation.annotation.Validated;
+
+@FeignClient(name = "boleto", url = "http://8081/api/boletos")
+@Validated
+public interface BoletoRepository {
+
+}

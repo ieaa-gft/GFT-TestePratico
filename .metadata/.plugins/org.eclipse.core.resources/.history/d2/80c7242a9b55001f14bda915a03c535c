@@ -1,0 +1,9 @@
+package br.com.gft.boleto.model.response;
+
+public class BoletoResponse {
+
+	public BoletoResponse() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
